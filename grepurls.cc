@@ -52,8 +52,8 @@ bool IsBracket(char c) {
 }
 
 int main(int argc, char* argv[]) {
-  ios_base::sync_with_stdio(false);
-  cin.tie(nullptr);
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(nullptr);
   std::string thunk;
   while (std::cin >> thunk) {
     // Trim.
