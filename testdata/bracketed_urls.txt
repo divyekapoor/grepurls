@@ -3,8 +3,4 @@
 {mailto:divye@divye.me}
 "ftp://divye:password@fake.me/"
 'mailto:divye@divye.me'
-'http://de.wikipedia.org/wiki/Uniform_Resource_Identifier"
 (ftp://ftp.is.co.za/rfc/rfc1808.txt)
-{file:///C:/Users/Benutzer/Desktop/Uniform%20Resource%20Identifier.html)
-[file:///etc/fstab}
-<geo:48.33,14.122;u=22.5'

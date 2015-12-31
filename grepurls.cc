@@ -11,6 +11,7 @@
 #include <string>
 #include <iomanip>
 #include <ios>
+#include <vector>
 
 #include <pegtl.hh>
 #include <pegtl/trace.hh>
@@ -43,10 +44,11 @@ using pegtl::uri::URIActions;
 using pegtl::uri::URIState;
 
 // Should be compiled down quite nicely. :)
-char brackets[] = {'{', '}', '[', ']', '(', ')', '<', '>', '"', '\''};
-bool IsBracket(char c) {
-  for (int i = 0; i < sizeof(brackets) / sizeof(char); ++i) {
-    if (c == brackets[i]) return true;
+const std::vector<std::vector<char>> brackets = {{'{', '}'}, {'[', ']'}, {'(', ')'},
+  {'<', '>'}, {'"', '"'}, {'\'', '\''}};
+bool IsMatchingBracket(char lhs, char rhs) {
+  for (int i = 0; i < brackets.size(); ++i) {
+    if (lhs == brackets[i][0] && rhs == brackets[i][1]) return true;
   }
   return false;
 }
@@ -60,8 +62,8 @@ int main(int argc, char* argv[]) {
   while (std::cin >> thunk) {
     // Trim.
     int start = 0, end = thunk.size();
-    for (; start < thunk.size() && IsBracket(thunk[start]); ++start) {}
-    for (; end > 0 && IsBracket(thunk[end - 1]); --end) {}
+    for (; start < thunk.size() && end > 0 &&
+        IsMatchingBracket(thunk[start], thunk[end - 1]); ++start, --end) {}
 
     URIState state;
     bool parse_result = pegtl::parse<grammar, URIActions>(
