@@ -17,4 +17,13 @@ git clone --recursive https://github.com/divyekapoor/grepurls.git
 make
 ```
 
+Execution
+---------
+
+```bash
+./grepurl < input.txt > urls.txt
+```
+
+The URLs will be output 1 per line.
+
 [rfc]: https://www.ietf.org/rfc/rfc3986.txt
