@@ -15,19 +15,20 @@ Just fetch and run Make:
 ```bash
 git clone --recursive https://github.com/divyekapoor/grepurls.git
 make
+sudo make install
 ```
 
 Execution
 ---------
 
 ```bash
-./grepurls < input.txt > urls.txt
+grepurls < input.txt > urls.txt
 ```
 
 OR
 
 ```bash
-cat /tmp/input.txt | ./grepurls
+cat /tmp/input.txt | grepurls
 ```
 
 if you prefer using it as a pipeline. The URLs will be output 1 per line.
