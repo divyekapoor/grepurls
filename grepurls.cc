@@ -41,13 +41,27 @@ namespace pegtl {
 using pegtl::uri::URIActions;
 using pegtl::uri::URIState;
 
+// Should be compiled down quite nicely. :)
+char brackets[] = {'{', '}', '[', ']', '(', ')', '<', '>', '"', '\''};
+bool IsBracket(char c) {
+  for (int i = 0; i < sizeof(brackets) / sizeof(char); ++i) {
+    if (c == brackets[i]) return true;
+  }
+  return false;
+}
+
 int main( int argc, char ** argv )
 {
   std::string thunk;
-  std::string source = "stdin";
   while (std::cin >> thunk) {
+    // Trim.
+    int start = 0, end = thunk.size();
+    for (; start < thunk.size() && IsBracket(thunk[start]); ++start) {}
+    for (; end > 0 && IsBracket(thunk[end - 1]); --end) {}
+
     URIState state;
-    bool parse_result = pegtl::parse< grammar, URIActions >( thunk, source, state );
+    bool parse_result = pegtl::parse<grammar, URIActions>(
+        thunk.data() + start, thunk.data() + end, "stdin", state);
     if (parse_result) {
       std::cout << state.uri << '\n';
     }
