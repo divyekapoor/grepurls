@@ -2,11 +2,14 @@ SOURCES=$(wildcard *.cc)
 OBJECTS=$(SOURCES:.cc=.o)
 BINS=$(SOURCES:.cc=)
 
-CXXFLAGS+=-std=c++11 -O3 -IPEGTL/
+CXXFLAGS+=-std=c++11 -g -O3 -IPEGTL/
 
-all: $(BINS)
+all: $(BINS) test
 
-.PHONY: clean
+test: $(BINS) run_tests.sh
+	./run_tests.sh
+
+.PHONY: clean test
 
 clean:
 	$(RM) $(OBJECTS) $(BINS)
