@@ -21,15 +21,19 @@ using grammar = pegtl::uri::URI;
 
 namespace pegtl {
   namespace uri {
+    // The state associated with the URI parse.
+    // (available to all actions).
     struct URIState {
       std::string uri;
     };
 
+    // The semantic actions associated with each parse rule.
     // The default base action class.
     template<typename Rule>
     struct URIActions : pegtl::nothing<Rule> {};
 
     // Action for the URI class.
+    // (saves the parsed URI to URIState.uri)
     template<>
     struct URIActions<URI> {
       static void apply(const pegtl::input& input,
