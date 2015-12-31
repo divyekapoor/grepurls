@@ -10,6 +10,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <ios>
 
 #include <pegtl.hh>
 #include <pegtl/trace.hh>
@@ -50,8 +51,9 @@ bool IsBracket(char c) {
   return false;
 }
 
-int main( int argc, char ** argv )
-{
+int main(int argc, char* argv[]) {
+  ios_base::sync_with_stdio(false);
+  cin.tie(nullptr);
   std::string thunk;
   while (std::cin >> thunk) {
     // Trim.
