@@ -9,6 +9,9 @@ all: $(BINS) test
 test: $(BINS) run_tests.sh
 	./run_tests.sh
 
+install: $(BINS)
+	cp $(BINS) /usr/local/bin/
+
 .PHONY: clean test
 
 clean:
