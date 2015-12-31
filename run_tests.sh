@@ -16,13 +16,12 @@ for f in `ls testdata`; do
   binary_result=$(${binary} < ${filename} | wc -l)
   expected_result=$(wc -l ${filename} | awk '{ print $1 }')
 
-  if [[ "x${binary_result}x" == "x${expected_result}x" ]]; then
+  if [[ "${binary_result}" -eq "${expected_result}" ]]; then
     echo ' PASS'
   else
     echo ' FAIL'
+    echo Binary: "x${binary_result}x"  Expected: "x${expected_result}x"
   fi
 
-  # Uncomment for testing.
-  # echo Binary: "x${binary_result}x"  Expected: "x${expected_result}x"
 done
 
