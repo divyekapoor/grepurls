@@ -21,9 +21,15 @@ Execution
 ---------
 
 ```bash
-./grepurl < input.txt > urls.txt
+./grepurls < input.txt > urls.txt
 ```
 
-The URLs will be output 1 per line.
+OR
+
+```bash
+cat /tmp/input.txt | ./grepurls
+```
+
+if you prefer using it as a pipeline. The URLs will be output 1 per line.
 
 [rfc]: https://www.ietf.org/rfc/rfc3986.txt
