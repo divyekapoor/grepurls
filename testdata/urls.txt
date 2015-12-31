@@ -1,0 +1,4 @@
+http://www.google.com
+http://www.wiki.org
+mailto:divye@divye.me
+ftp://divye:password@fake.me/
