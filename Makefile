@@ -14,8 +14,12 @@ test: $(BINS) run_tests.sh
 
 install: $(BINS)
 	@echo Installing to $(INSTALLPATH)
-	cp $(BINS) /usr/local/bin/
+	cp $(BINS) $(INSTALLPATH)
 	ln -s $(INSTALLPATH)/$(BINS) $(INSTALLPATH)/ugrep
+
+uninstall:
+	rm $(INSTALLPATH)/$(BINS)
+	rm $(INSTALLPATH)/ugrep
 
 .PHONY: clean test
 
