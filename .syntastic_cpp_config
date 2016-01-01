@@ -1,1 +1,1 @@
--IPEGTL -g -Wall
+-IPEGTL -Igflags/build/include -g -Wall
