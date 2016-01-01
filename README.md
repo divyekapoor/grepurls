@@ -30,17 +30,25 @@ Usage
 -----
 
 ```bash
-ugrep < input.txt > urls.txt
+ugrep input.txt
 cat /tmp/input.txt | ugrep
 ```
 
 OR
 
 ```bash
-grepurls < input.txt > urls.txt
+grepurls input.txt
 cat /tmp/input.txt | grepurls
 ```
 
 The URLs will be output 1 per line.
+
+
+Uninstall
+---------
+
+```bash
+sudo make uninstall
+```
 
 [rfc]: https://www.ietf.org/rfc/rfc3986.txt
