@@ -15,6 +15,7 @@ Just fetch and run Make:
 ```bash
 git clone --recursive https://github.com/divyekapoor/grepurls.git
 cd grepurls
+./bootstrap.sh
 make
 sudo make install
 ```
