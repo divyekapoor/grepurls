@@ -3,7 +3,9 @@ OBJECTS=$(SOURCES:.cc=.o)
 BINS=$(SOURCES:.cc=)
 INSTALLPATH=/usr/local/bin
 
-CXXFLAGS+=-std=c++11 -Wall -g -O3 -IPEGTL/
+CXXFLAGS+=-std=c++11 -Wall -g -O3 -IPEGTL/ -Igflags/build/include
+LDFLAGS+=-Lgflags/build/lib
+LDLIBS+=-lgflags
 
 all: $(BINS) test
 
