@@ -12,12 +12,30 @@
 #include <iomanip>
 #include <ios>
 #include <vector>
+#include <fstream>
 
 #include <pegtl.hh>
 #include <pegtl/trace.hh>
 #include <pegtl/contrib/uri.hh>
 
+#include <gflags/gflags.h>
+
 using grammar = pegtl::uri::URI;
+
+const char usage[] =
+R"(A utility that extracts URLs from input.
+
+Typical usage:
+  grepurls [-hv] [file...]
+  ugrep [-hv] [file...]
+
+If no files are supplied on the command line, we read the input from stdin.)";
+
+DECLARE_bool(help);       // Defined by the gflags library.
+DECLARE_bool(helpshort);  // Defined by the gflags library.
+DECLARE_bool(version);    // Defined by the gflags library.
+DEFINE_bool(v, false, "Display the version of the binary.");
+DEFINE_bool(h, false, "Display help.");
 
 namespace pegtl {
   namespace uri {
@@ -57,24 +75,68 @@ bool IsMatchingBracket(char lhs, char rhs) {
   return false;
 }
 
+void grepurl(const std::string& thunk) {
+  // Trim.
+  int start = 0, end = thunk.size();
+  for (; start < thunk.size() && end > 0 &&
+      IsMatchingBracket(thunk[start], thunk[end - 1]); ++start, --end) {}
+
+  // Match.
+  URIState state;
+  bool parse_result = pegtl::parse<grammar, URIActions>(
+      thunk.data() + start, thunk.data() + end, "stdin", state);
+
+  // Output.
+  if (parse_result) {
+    std::cout << state.uri << '\n';
+  }
+}
+
+template<class IStream>
+void process(IStream& in) {
+  std::string thunk;
+  while (in >> thunk) {
+    grepurl(thunk);
+  }
+}
+
+
 int main(int argc, char* argv[]) {
+  // Handle command line flags.
+  // Slightly uglier than necessary due to:
+  // https://github.com/gflags/gflags/issues/43
+  gflags::SetUsageMessage(usage);
+  gflags::SetVersionString("0.9");
+  gflags::ParseCommandLineNonHelpFlags(&argc, &argv, true);
+  if (FLAGS_v) {
+    FLAGS_version = true;
+  }
+  if (FLAGS_help || FLAGS_h) {
+    FLAGS_help = false;
+    FLAGS_helpshort = true;
+  }
+  gflags::HandleCommandLineHelpFlags();
+
   // Fast IO.
   std::ios_base::sync_with_stdio(false);
   std::cin.tie(nullptr);
+  std::cout.tie(nullptr);
 
-  std::string thunk;
-  while (std::cin >> thunk) {
-    // Trim.
-    int start = 0, end = thunk.size();
-    for (; start < thunk.size() && end > 0 &&
-        IsMatchingBracket(thunk[start], thunk[end - 1]); ++start, --end) {}
+  // Argv contains just the filenames now.
+  const bool files_found = (argc > 1);
+  if (!files_found) {
+    process(std::cin);
+    return 0;
+  }
 
-    URIState state;
-    bool parse_result = pegtl::parse<grammar, URIActions>(
-        thunk.data() + start, thunk.data() + end, "stdin", state);
-    if (parse_result) {
-      std::cout << state.uri << '\n';
+  bool atleast_one_file_opened = false;
+  for (int i = 1; i < argc; ++i) {
+    std::ifstream fin(argv[i]);
+    if (fin) {
+      atleast_one_file_opened = true;
+      process(fin);
     }
   }
-  return 0;
+
+  return atleast_one_file_opened ? 0 : 1;
 }
