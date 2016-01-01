@@ -12,7 +12,7 @@ set -e
 cd gflags
 mkdir build
 cd build
-cmake
+cmake ..
 
 # Actually build the library.
 make
