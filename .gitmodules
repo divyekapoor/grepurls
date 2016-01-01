@@ -1,3 +1,6 @@
 [submodule "PEGTL"]
 	path = PEGTL
 	url = https://github.com/ColinH/PEGTL.git
+[submodule "gflags"]
+	path = gflags
+	url = https://github.com/gflags/gflags.git
