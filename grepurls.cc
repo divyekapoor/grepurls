@@ -15,12 +15,13 @@
 #include <fstream>
 
 #include <pegtl.hh>
+#include <pegtl/analyze.hh>
 #include <pegtl/trace.hh>
 #include <pegtl/contrib/uri.hh>
 
 #include <gflags/gflags.h>
 
-using grammar = pegtl::uri::URI;
+using grammar = pegtl::until<pegtl::uri::URI>;
 
 const char usage[] =
 R"(A utility that extracts URLs from input.
@@ -87,7 +88,7 @@ void grepurl(const std::string& thunk) {
       thunk.data() + start, thunk.data() + end, "stdin", state);
 
   // Output.
-  if (parse_result) {
+  if (parse_result && !state.uri.empty()) {
     std::cout << state.uri << '\n';
   }
 }
@@ -121,6 +122,10 @@ int main(int argc, char* argv[]) {
   std::ios_base::sync_with_stdio(false);
   std::cin.tie(nullptr);
   std::cout.tie(nullptr);
+
+  /* Analysis */
+  // const size_t issues_found = pegtl::analyze<grammar>();
+  // std::cout << "Grammar issues found: " << issues_found << '\n';
 
   // Argv contains just the filenames now.
   const bool files_found = (argc > 1);
