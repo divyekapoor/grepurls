@@ -69,7 +69,7 @@ using pegtl::uri::URIState;
 const std::vector<std::vector<char>> brackets = {{'{', '}'}, {'[', ']'}, {'(', ')'},
   {'<', '>'}, {'"', '"'}, {'\'', '\''}};
 bool IsMatchingBracket(char lhs, char rhs) {
-  for (int i = 0; i < brackets.size(); ++i) {
+  for (size_t i = 0; i < brackets.size(); ++i) {
     if (lhs == brackets[i][0] && rhs == brackets[i][1]) return true;
   }
   return false;
@@ -77,7 +77,7 @@ bool IsMatchingBracket(char lhs, char rhs) {
 
 void grepurl(const std::string& thunk) {
   // Trim.
-  int start = 0, end = thunk.size();
+  size_t start = 0, end = thunk.size();
   for (; start < thunk.size() && end > 0 &&
       IsMatchingBracket(thunk[start], thunk[end - 1]); ++start, --end) {}
 

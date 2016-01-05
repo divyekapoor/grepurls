@@ -5,7 +5,7 @@ INSTALLPATH=/usr/local/bin
 
 CXXFLAGS+=-std=c++11 -Wall -g -O3 -IPEGTL/ -Igflags/build/include
 LDFLAGS+=-Lgflags/build/lib
-LDLIBS+=-lgflags
+LDLIBS+=-lgflags -lpthread
 
 all: $(BINS) test
 
