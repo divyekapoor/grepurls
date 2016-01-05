@@ -15,6 +15,7 @@ test: $(BINS) run_tests.sh
 install: $(BINS)
 	@echo Installing to $(INSTALLPATH)
 	cp $(BINS) $(INSTALLPATH)
+	chmod 755 $(INSTALLPATH)/$(BINS)
 	ln -s $(INSTALLPATH)/$(BINS) $(INSTALLPATH)/ugrep
 
 uninstall:
