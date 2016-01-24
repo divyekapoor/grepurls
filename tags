@@ -1,0 +1,78 @@
+Copyright	PEGTL/pegtl/analyze.hh	/^\/\/ Copyright (c) 2014-2015 Dr. Colin Hirsch and /
+DECLARE_VARIABLE	gflags/build/include/gflags/gflags_declare.h	/^#define DECLARE_VARIABLE(type, shorttype, name) \\/
+DECLARE_bool	gflags/build/include/gflags/gflags_declare.h	/^#define DECLARE_bool(name) \\$/
+DECLARE_double	gflags/build/include/gflags/gflags_declare.h	/^#define DECLARE_double(name) \\$/
+DECLARE_int32	gflags/build/include/gflags/gflags_declare.h	/^#define DECLARE_int32(name) \\$/
+DECLARE_int64	gflags/build/include/gflags/gflags_declare.h	/^#define DECLARE_int64(name) \\$/
+DECLARE_string	gflags/build/include/gflags/gflags_declare.h	/^#define DECLARE_string(name) \\$/
+DECLARE_uint64	gflags/build/include/gflags/gflags_declare.h	/^#define DECLARE_uint64(name) \\$/
+DEFINE_string	gflags/build/include/gflags/gflags.h	/^#define DEFINE_string(name, val, txt)             /
+FLAGS	gflags/build/include/gflags/gflags.h	/^\/\/ changing default values for some FLAGS (via$/
+IsMatchingBracket	grepurls.cc	/^bool IsMatchingBracket(char lhs, char rhs) {$/
+Mgrepurls.cc	grepurls.cc	/^int main(int argc, char* argv[]) {$/
+PEGTL_INTERNAL_STRING_10	PEGTL/pegtl/internal/pegtl_string.hh	/^#define PEGTL_INTERNAL_STRING_10(n,x)           \\/
+PEGTL_INTERNAL_STRING_100	PEGTL/pegtl/internal/pegtl_string.hh	/^#define PEGTL_INTERNAL_STRING_100(x)            \\/
+PEGTL_THROW_INPUT_ERROR	PEGTL/pegtl/input_error.hh	/^#define PEGTL_THROW_INPUT_ERROR( MESSAGE )        /
+TODO	gflags/build/include/gflags/gflags.h	/^\/\/ TODO(user) Fix locking when validators are ru/
+action	PEGTL/pegtl/internal/action.hh	/^      struct action$/
+any	PEGTL/pegtl/internal/any.hh	/^      struct any$/
+append_all	PEGTL/pegtl/contrib/unescape.hh	/^      struct append_all$/
+at	PEGTL/pegtl/internal/at.hh	/^      struct at$/
+bool_list	PEGTL/pegtl/internal/bump_util.hh	/^      template< bool ... > struct bool_list {};$/
+bytes	PEGTL/pegtl/internal/bytes.hh	/^      struct bytes$/
+change_both_helper	PEGTL/pegtl/contrib/changes.hh	/^   struct change_both_helper$/
+clstring	gflags/build/include/gflags/gflags_declare.h	/^typedef std::string clstring;$/
+control	PEGTL/pegtl/internal/control.hh	/^      struct control$/
+disable	PEGTL/pegtl/internal/disable.hh	/^      struct disable$/
+dummy_disabled_state	PEGTL/pegtl/contrib/changes.hh	/^      struct dummy_disabled_state$/
+enable	PEGTL/pegtl/internal/enable.hh	/^      struct enable$/
+eof	PEGTL/pegtl/internal/eof.hh	/^      struct eof$/
+eolf	PEGTL/pegtl/internal/eolf.hh	/^      struct eolf$/
+file_opener	PEGTL/pegtl/internal/file_opener.hh	/^      struct file_opener$/
+grepurl	grepurls.cc	/^void grepurl(const std::string& thunk) {$/
+if_then_else	PEGTL/pegtl/internal/if_then_else.hh	/^      struct if_then_else$/
+input_data	PEGTL/pegtl/internal/input_data.hh	/^      struct input_data$/
+input_pair	PEGTL/pegtl/internal/input_pair.hh	/^      struct input_pair$/
+int32	gflags/build/include/gflags/gflags_declare.h	/^typedef int32_t          int32;$/
+int64	gflags/build/include/gflags/gflags_declare.h	/^typedef int64_t          int64;$/
+istring	PEGTL/pegtl/internal/istring.hh	/^      struct istring$/
+normal	PEGTL/pegtl/normal.hh	/^   struct normal$/
+not_at	PEGTL/pegtl/internal/not_at.hh	/^      struct not_at$/
+nothing	PEGTL/pegtl/nothing.hh	/^   template< typename Rule > struct nothing {};$/
+one	PEGTL/pegtl/internal/one.hh	/^      struct one$/
+opt	PEGTL/pegtl/internal/opt.hh	/^      struct opt$/
+peek_char	PEGTL/pegtl/internal/peek_char.hh	/^      struct peek_char$/
+peek_utf16	PEGTL/pegtl/internal/peek_utf16.hh	/^      struct peek_utf16$/
+peek_utf32	PEGTL/pegtl/internal/peek_utf32.hh	/^      struct peek_utf32$/
+peek_utf8	PEGTL/pegtl/internal/peek_utf8.hh	/^      struct peek_utf8$/
+pegtl_istring_t	PEGTL/pegtl/internal/pegtl_string.hh	/^#define pegtl_istring_t(x) \\$/
+pegtl_string_t	PEGTL/pegtl/internal/pegtl_string.hh	/^#define pegtl_string_t(x) \\$/
+plus	PEGTL/pegtl/internal/plus.hh	/^      struct plus$/
+position_info	PEGTL/pegtl/position_info.hh	/^   struct position_info$/
+process	grepurls.cc	/^void process(IStream& in) {$/
+raise	PEGTL/pegtl/internal/raise.hh	/^      struct raise$/
+range	PEGTL/pegtl/internal/range.hh	/^      struct range$/
+ranges	PEGTL/pegtl/internal/ranges.hh	/^      struct ranges$/
+raw_string_close	PEGTL/pegtl/contrib/raw_string.hh	/^      struct raw_string_close$/
+raw_string_open	PEGTL/pegtl/contrib/raw_string.hh	/^      struct raw_string_open$/
+raw_string_state	PEGTL/pegtl/contrib/raw_string.hh	/^      struct raw_string_state$/
+raw_string_tag	PEGTL/pegtl/contrib/raw_string.hh	/^      struct raw_string_tag$/
+rep	PEGTL/pegtl/internal/rep.hh	/^      struct rep$/
+rep_min_max	PEGTL/pegtl/internal/rep_min_max.hh	/^      struct rep_min_max$/
+rep_opt	PEGTL/pegtl/internal/rep_opt.hh	/^      struct rep_opt$/
+routine	gflags/build/include/gflags/gflags.h	/^\/\/   routine (or methods of this class) concurre/
+rule_conjunction	PEGTL/pegtl/internal/rule_conjunction.hh	/^      struct rule_conjunction$/
+seq	PEGTL/pegtl/internal/seq.hh	/^      struct seq$/
+sor	PEGTL/pegtl/internal/sor.hh	/^      struct sor$/
+star	PEGTL/pegtl/internal/star.hh	/^      struct star$/
+state	PEGTL/pegtl/internal/state.hh	/^      struct state$/
+string	PEGTL/pegtl/internal/string.hh	/^      struct string$/
+trivial	PEGTL/pegtl/internal/trivial.hh	/^      struct trivial$/
+try_catch_type	PEGTL/pegtl/internal/try_catch_type.hh	/^      struct try_catch_type$/
+uint32	gflags/build/include/gflags/gflags_declare.h	/^typedef uint32_t         uint32;$/
+uint64	gflags/build/include/gflags/gflags_declare.h	/^typedef uint64_t         uint64;$/
+unescape_c	PEGTL/pegtl/contrib/unescape.hh	/^      struct unescape_c$/
+unescape_j	PEGTL/pegtl/contrib/unescape.hh	/^      struct unescape_j$/
+unescape_u	PEGTL/pegtl/contrib/unescape.hh	/^      struct unescape_u$/
+unescape_x	PEGTL/pegtl/contrib/unescape.hh	/^      struct unescape_x$/
+until	PEGTL/pegtl/internal/until.hh	/^      struct until$/
