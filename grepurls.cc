@@ -119,7 +119,7 @@ int main(int argc, char* argv[]) {
   // Slightly uglier than necessary due to:
   // https://github.com/gflags/gflags/issues/43
   gflags::SetUsageMessage(usage);
-  gflags::SetVersionString("0.9");
+  gflags::SetVersionString("1.0.0");
   gflags::ParseCommandLineNonHelpFlags(&argc, &argv, true);
   if (FLAGS_v) {
     FLAGS_version = true;
