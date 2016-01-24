@@ -57,10 +57,7 @@ namespace pegtl
                                 seq< opt< h16, rep_opt< 6, colon, h16 > >, dcolon                             > > {};
 
       struct gen_delims : one< ':', '/', '?', '#', '[', ']', '@' > {};
-      struct sub_delims : one< '!', '$', '&', '*', '+', ',', ';', '=' > {};
-      // original set:
-      // struct sub_delims : one< '!', '$', '&', '\'', '(', ')', '*', '+', ',', ';', '=' > {};
-      // This change reduces but does not eliminate extra globbing in the URI.
+      struct sub_delims : one< '!', '$', '&', '\'', '(', ')', '*', '+', ',', ';', '=' > {};
 
       struct unreserved : sor< ALPHA, DIGIT, one< '-', '.', '_', '~' > > {};
       struct reserved : sor< gen_delims, sub_delims > {};
