@@ -30,15 +30,21 @@ Usage
 -----
 
 ```bash
-ugrep input.txt
-cat /tmp/input.txt | ugrep
+ugrep input.html input1.txt input2.txt
+cat /tmp/input.html /tmp/input1.txt /tmp/input2.txt | ugrep
 ```
 
 OR
 
 ```bash
-grepurls input.txt
-cat /tmp/input.txt | grepurls
+grepurls input.html input1.txt input2.txt
+cat /tmp/input.html /tmp/input1.txt /tmp/input2.txt | grepurls
+```
+
+You can use standard shell expansion to run `ugrep` over entire directories:
+
+```sh
+ugrep mirrored_website/*.html
 ```
 
 The URLs will be output 1 per line.
