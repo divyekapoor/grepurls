@@ -13,22 +13,21 @@ for f in `ls testdata`; do
   filename=testdata/${f}
   echo -n Running ${filename}...
 
-  # Use shell redirection to supply input and pipe it to wc -l.
-  redirect_result=$(${binary} < ${filename} | wc -l)
+  # Use shell redirection to supply input
+  redirect_output=/tmp/grepurls.redirect.out
+  ${binary} < ${filename} > ${redirect_output}
 
   # Use direct filename read to supply input and pipe it to wc -l
-  file_result=$(${binary} ${filename} | wc -l)
+  file_output=/tmp/grepurls.file.out
+  ${binary} ${filename} > ${file_output}
 
-  # Expected result: all urls match.
-  # Sadly, we don't have negative tests yet.
-  expected_result=$(wc -l ${filename} | awk '{ print $1 }')
-
-  if [[ "${redirect_result}" -eq "${expected_result}" && "${file_result}" -eq "${expected_result}" ]]; then
-    echo ' PASS'
-  else
-    echo ' FAIL'
-    echo Redirect: "x${redirect_result}x" Direct: "x${file_result}x"  Expected: "x${expected_result}x"
-  fi
+  # Diff outputs.
+  diff_redirect_output=/tmp/grepurls.redirect.diff
+  diff_file_output=/tmp/grepurls.file.diff
+  diff_flags='-y --suppress-common-lines'
+  (diff ${diff_flags} ${redirect_output} expected/${f} > ${diff_redirect_output} && \
+    diff ${diff_flags} ${file_output} expected/${f} > ${diff_file_output} && echo ' PASS') || \
+    (echo ' FAIL' && cat ${diff_redirect_output} ${diff_redirect_output})
 done
 
 for f in `ls faildata`; do

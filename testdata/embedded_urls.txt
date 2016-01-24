@@ -2,10 +2,10 @@
 <markdown><http://www.wiki.org>
 Email{mailto:divye@divye.me}
 Print("ftp://divye:password@fake.me/")
-print('mailto:divye@divye.me')
+print('mailto:divye@divye.com')
 print('http://divye@divye.me')
 (ftp://ftp.is.co.za/rfc/rfc1808.txt)
-href="mailto:divye@divye.me"
-href='mailto:divye@divye.me'
+href="mailto:divye@divye.in"
+href='mailto:divye@divye.xyz'
 href="ftp://divye:password@fake.me/"
 href='ftp://divye:password@fake.me/'

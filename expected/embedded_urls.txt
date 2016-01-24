@@ -1,0 +1,11 @@
+http://www.google.com
+http://www.wiki.org
+mailto:divye@divye.me
+ftp://divye:password@fake.me/
+mailto:divye@divye.com
+http://divye@divye.me
+ftp://ftp.is.co.za/rfc/rfc1808.txt
+mailto:divye@divye.in
+mailto:divye@divye.xyz
+ftp://divye:password@fake.me/
+ftp://divye:password@fake.me/
