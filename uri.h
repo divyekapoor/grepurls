@@ -56,8 +56,9 @@ namespace pegtl
                                 seq< opt< h16, rep_opt< 5, colon, h16 > >, dcolon,                       h16  >,
                                 seq< opt< h16, rep_opt< 6, colon, h16 > >, dcolon                             > > {};
 
-      struct gen_delims : one< ':', '/', '?', '#', '[', ']', '@' > {};
-      struct sub_delims : one< '!', '$', '&', '\'', '(', ')', '*', '+', ',', ';', '=' > {};
+      struct gen_delims : one< ':', '/', '?', '#', '[', ']', '@', '\''  > {};
+      struct sub_delims : one< '!', '$', '&', '(', ')', '*', '+', ',', ';', '=' > {};
+      struct sub_delims_without_single_quote : one< '!', '$', '&', '(', ')', '*', '+', ',', ';', '=' > {};
 
       struct unreserved : sor< ALPHA, DIGIT, one< '-', '.', '_', '~' > > {};
       struct reserved : sor< gen_delims, sub_delims > {};
