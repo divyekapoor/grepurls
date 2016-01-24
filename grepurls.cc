@@ -15,6 +15,7 @@
 #include <fstream>
 
 #include <pegtl.hh>
+#include <pegtl/analyze.hh>
 #include <pegtl/trace.hh>
 #include <pegtl/contrib/uri.hh>
 
@@ -312,8 +313,7 @@ pegtl_istring_t("z39.50")
 }
 
 
-using grammar = pegtl::uri::iana_URI;
-
+using grammar = pegtl::until<pegtl::uri::iana_URI>;
 
 using pegtl::uri::URIActions;
 using pegtl::uri::URIState;
@@ -322,7 +322,7 @@ using pegtl::uri::URIState;
 const std::vector<std::vector<char>> brackets = {{'{', '}'}, {'[', ']'}, {'(', ')'},
   {'<', '>'}, {'"', '"'}, {'\'', '\''}};
 bool IsMatchingBracket(char lhs, char rhs) {
-  for (int i = 0; i < brackets.size(); ++i) {
+  for (size_t i = 0; i < brackets.size(); ++i) {
     if (lhs == brackets[i][0] && rhs == brackets[i][1]) return true;
   }
   return false;
@@ -330,7 +330,7 @@ bool IsMatchingBracket(char lhs, char rhs) {
 
 void grepurl(const std::string& thunk) {
   // Trim.
-  int start = 0, end = thunk.size();
+  size_t start = 0, end = thunk.size();
   for (; start < thunk.size() && end > 0 &&
       IsMatchingBracket(thunk[start], thunk[end - 1]); ++start, --end) {}
 
@@ -340,7 +340,7 @@ void grepurl(const std::string& thunk) {
       thunk.data() + start, thunk.data() + end, "stdin", state);
 
   // Output.
-  if (parse_result) {
+  if (parse_result && !state.uri.empty()) {
     std::cout << state.uri << '\n';
   }
 }
@@ -374,6 +374,10 @@ int main(int argc, char* argv[]) {
   std::ios_base::sync_with_stdio(false);
   std::cin.tie(nullptr);
   std::cout.tie(nullptr);
+
+  /* Analysis */
+  // const size_t issues_found = pegtl::analyze<grammar>();
+  // std::cout << "Grammar issues found: " << issues_found << '\n';
 
   // Argv contains just the filenames now.
   const bool files_found = (argc > 1);
