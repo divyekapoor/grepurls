@@ -27,8 +27,22 @@ for f in `ls testdata`; do
     echo ' PASS'
   else
     echo ' FAIL'
-    echo Redirect: "x${redirect_result}x" Direct: ${file_result}  Expected: "x${expected_result}x"
+    echo Redirect: "x${redirect_result}x" Direct: "x${file_result}x"  Expected: "x${expected_result}x"
   fi
+done
 
+for f in `ls faildata`; do
+  filename=faildata/${f}
+  echo -n Running ${filename}...
+
+  redirect_result=$(${binary} < ${filename} | wc -l)
+  file_result=$(${binary} ${filename} | wc -l)
+  expected_result=0
+  if [[ "${redirect_result}" -eq "${expected_result}" && "${file_result}" -eq "${expected_result}" ]]; then
+    echo ' PASS'
+  else
+    echo ' FAIL'
+    echo Redirect: "x${redirect_result}x" Direct: "x${file_result}x" Expected: "x${expected_result}x"
+  fi
 done
 
