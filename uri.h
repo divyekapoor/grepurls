@@ -58,7 +58,6 @@ namespace pegtl
 
       struct gen_delims : one< ':', '/', '?', '#', '[', ']', '@', '\''  > {};
       struct sub_delims : one< '!', '$', '&', '(', ')', '*', '+', ',', ';', '=' > {};
-      struct sub_delims_without_single_quote : one< '!', '$', '&', '(', ')', '*', '+', ',', ';', '=' > {};
 
       struct unreserved : sor< ALPHA, DIGIT, one< '-', '.', '_', '~' > > {};
       struct reserved : sor< gen_delims, sub_delims > {};
