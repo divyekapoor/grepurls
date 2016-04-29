@@ -12,7 +12,7 @@ git submodule update --init --recursive
 # Set up GFlags and build the static and dynamic libraries.
 # We will use only the static library though.
 cd gflags
-mkdir build
+mkdir -p build
 cd build
 cmake ..
 
