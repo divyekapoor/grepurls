@@ -5,13 +5,13 @@ BINS=$(SOURCES:.cc=)
 DEPS=$(OBJECTS:.o=.d)
 INSTALLPATH=/usr/local/bin
 
-CXXFLAGS+=-std=c++11 -Wall -g -O3 -MMD -MP -MF $(DEPS) -IPEGTL/ -Igflags/build/include
-LDFLAGS+=-Lgflags/build/lib
+CXXFLAGS+=-std=c++11 -Wall -g -O3 -MMD -MP -MF $(DEPS) -I ./PEGTL/ -I ./gflags/build/include
+LDFLAGS+=-L ./gflags/build/lib -static
 LDLIBS+=-lgflags -lpthread
 
 # Pattern rule for compilation of CC files.
 %: %.cc
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(LDLIBS) $(filter %.cc,$^) -o $@
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(filter %.cc,$^) $(LDLIBS) -o $@
 
 all: $(BINS) test
 
