@@ -26,6 +26,9 @@ path, just edit the Makefile.
 Note: The binary is installed as "grepurls" and "ugrep". You may use either one
 as per your convenience.
 
+If you like, you can also download a pre-built binary from the
+[Releases](https://github.com/divyekapoor/grepurls/releases) page.
+
 Usage
 -----
 
