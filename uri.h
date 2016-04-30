@@ -11,10 +11,14 @@
 #ifndef GREPURLS_URI_H
 #define GREPURLS_URI_H
 
+#include <vector>
+
 #include <pegtl/rules.hh>
 #include <pegtl/ascii.hh>
 #include <pegtl/utf8.hh>
 #include <pegtl/contrib/abnf.hh>
+
+#include "uri_state.h"
 
 namespace pegtl
 {

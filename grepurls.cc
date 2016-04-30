@@ -20,6 +20,7 @@
 
 #include <gflags/gflags.h>
 
+#include "uri_state.h"
 #include "uri.h"
 
 const char usage[] =
@@ -39,13 +40,6 @@ DEFINE_bool(h, false, "Display help.");
 
 namespace pegtl {
   namespace uri {
-
-    // The state associated with the URI parse.
-    // (available to all actions).
-    struct URIState {
-      std::string uri;
-    };
-
     // The semantic actions associated with each parse rule.
     // The default base action class.
     template<typename Rule>
