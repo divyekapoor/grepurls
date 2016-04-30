@@ -1,3 +1,12 @@
+#
+# Author: Divye Kapoor (divyekapoor@gmail.com)
+#
+# Typical usage:
+# $ ./configure && make && make test
+# $ sudo make install
+#
+# Change the INSTALLPATH below if you want to install the binaries to a new location.
+#
 SOURCES=$(wildcard *.cc)
 HEADERS=$(wildcard *.h)
 OBJECTS=$(SOURCES:.cc=.o)
