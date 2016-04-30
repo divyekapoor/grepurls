@@ -13,7 +13,7 @@ LDLIBS+=-lgflags -lpthread
 %: %.cc
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(filter %.cc,$^) $(LDLIBS) -o $@
 
-all: $(BINS) test
+all: $(BINS)
 
 test: $(BINS) run_tests.sh
 	./run_tests.sh
