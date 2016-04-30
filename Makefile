@@ -6,7 +6,7 @@ DEPS=$(OBJECTS:.o=.d)
 INSTALLPATH=/usr/local/bin
 
 CXXFLAGS+=-std=c++11 -Wall -g -O3 -MMD -MP -MF $(DEPS) -I ./PEGTL/ -I ./gflags/build/include
-LDFLAGS+=-L ./gflags/build/lib -static
+LDFLAGS+=-L ./gflags/build/lib
 LDLIBS+=-lgflags -lpthread
 
 # Pattern rule for compilation of CC files.
