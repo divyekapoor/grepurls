@@ -15,7 +15,7 @@ Just fetch and run Make:
 ```bash
 git clone --recursive https://github.com/divyekapoor/grepurls.git
 cd grepurls
-./configure.sh && make && sudo make install
+./configure && make && sudo make install
 ```
 
 by default, we install to /usr/local/bin/. If you'd like to install to another
