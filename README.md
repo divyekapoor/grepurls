@@ -6,6 +6,8 @@ and prints those URLs to stdout. URLs conforming to the [RFC 3986][rfc] should b
 parsed successfully.  URLs that are delimited by various characters such as (),
 <>, {}, [], "", '' are also supported.
 
+[![Build Status](https://travis-ci.org/divyekapoor/grepurls.svg?branch=master)](https://travis-ci.org/divyekapoor/grepurls)
+
 
 Installation
 ------------
