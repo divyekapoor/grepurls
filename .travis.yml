@@ -1,3 +1,10 @@
 language: c
 sudo: required
 dist: trusty
+deploy:
+  provider: releases
+  api_key:
+    secure: B28byf8/79hb0X9YXm7LvutMrspysFwsrT7THCMc/9366TNFvETgdQL6+NUqcrls54h7pin0IBpBraGrwbqI0EWx6dbckVsHEmv/kx/SEODFrY5QRyfV0MWS7klUS5G1qjSYb2en+fr260sqcL51zRHVallpdMfMVfC4RzAKYJzHFFyf05zAhRzZyPlX5LbNe5s1naRhzH0em2ZiNmPlw3l2ti96k6AAiLSlqKF/aa/UcEzHxJt7+7pigJsrYay+ZoK1qE48dHt7dDyQf9iqvMdmeKYse4LaSudsW7Q1qsJFlr69um9SVPOrPXgfAMQOCjJrrEnTlsoGBpYWwDcHpzrYzQdTh6SQN3WWD/Ke3XjofOe5TUlKTQDMXkBAmZCXRjtcrrLMKyWsN/w8ze+sJcLbNxf37BRLREDkgsLDyQze6vwOh7/xLk6PqfNqrkjA9lZE0qUtNh+oQOrQMduUjTT6L3o2bQ7Q64ZMBvsBEr2YRHC9WCrIgnxSO4Fjdv1U88i7ioE+h0v8yBe29kApvAndSJVDxdPk7qfI30NA7xKt+7B7VhB2x0Capo1SGWDfc3CFIfYeMYAgtkoFKiS4dQWOs8oqY48IyQR0NHYHIoMFYlNGghQxkZZAiw1+UNpacfQB46TTuT55SVnUFT6baVYv+ANB3wr6A/eHog/VPvY=
+  file: grepurls
+  on:
+    repo: divyekapoor/grepurls
