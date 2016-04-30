@@ -9,6 +9,7 @@ namespace pegtl {
     // The state associated with the URI parse.
     // (available to all actions).
     struct URIState {
+      std::string scheme;
       std::string uri;
       char opening_context;
     };

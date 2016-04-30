@@ -8,6 +8,7 @@
 set -e
 
 binary=./grepurls
+flags=--schemes=
 
 for f in `ls testdata`; do
   filename=testdata/${f}
@@ -15,11 +16,11 @@ for f in `ls testdata`; do
 
   # Use shell redirection to supply input
   redirect_output=/tmp/grepurls.redirect.out
-  ${binary} < ${filename} > ${redirect_output}
+  ${binary} ${flags} < ${filename} > ${redirect_output}
 
   # Use direct filename read to supply input and pipe it to wc -l
   file_output=/tmp/grepurls.file.out
-  ${binary} ${filename} > ${file_output}
+  ${binary} ${flags} ${filename} > ${file_output}
 
   # Diff outputs.
   diff_redirect_output=/tmp/grepurls.redirect.diff

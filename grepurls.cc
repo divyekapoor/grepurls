@@ -13,6 +13,10 @@
 #include <ios>
 #include <vector>
 #include <fstream>
+#include <algorithm>
+#include <cctype>
+#include <locale>
+#include <functional>
 
 #include <pegtl.hh>
 #include <pegtl/analyze.hh>
@@ -37,6 +41,8 @@ DECLARE_bool(helpshort);  // Defined by the gflags library.
 DECLARE_bool(version);    // Defined by the gflags library.
 DEFINE_bool(v, false, "Display the version of the binary.");
 DEFINE_bool(h, false, "Display help.");
+DEFINE_string(schemes, "http,https", "The list of allowed schemas. If set to empty, yields URIs with all schemas.");
+
 
 namespace pegtl {
   namespace uri {
@@ -63,6 +69,32 @@ namespace pegtl {
       }
     };
 
+    namespace {
+      std::string tolower(const std::string& input) {
+        const std::locale utf8("en_US.UTF-8");
+        std::string output;
+        std::transform(input.begin(), input.end(), std::back_inserter(output), [&utf8](char c) {
+          return std::tolower(c, utf8);
+        });
+        return output;
+      }
+    }
+
+    template<>
+    struct URIActions<scheme> {
+      static void apply(const pegtl::input& input,
+          URIState& parsed_uri) {
+        parsed_uri.scheme.assign(tolower(input.string()));
+      }
+    };
+
+    template<>
+    struct URIActions<iana_scheme> {
+      static void apply(const pegtl::input& input,
+          URIState& parsed_uri) {
+        parsed_uri.scheme.assign(tolower(input.string()));
+      }
+    };
   }
 }
 
@@ -82,7 +114,7 @@ bool IsMatchingBracket(char lhs, char rhs) {
   return false;
 }
 
-void grepurl(const std::string& thunk) {
+void grepurl(const std::string& thunk, const std::set<std::string>& allowed_schemes) {
   // Trim.
   size_t start = 0, end = thunk.size();
   for (; start < thunk.size() && end > 0 &&
@@ -94,16 +126,28 @@ void grepurl(const std::string& thunk) {
       thunk.data() + start, thunk.data() + end, "stdin", state);
 
   // Output.
-  if (parse_result && !state.uri.empty()) {
+  if (parse_result && !state.uri.empty() && (allowed_schemes.empty() ||
+      allowed_schemes.find(state.scheme) != allowed_schemes.end())) {
     std::cout << state.uri << '\n';
+  }
+}
+
+
+void split(const std::string& s, char delim, std::set<std::string>* elems) {
+  std::stringstream ss(s);
+  std::string item;
+  while (std::getline(ss, item, delim)) {
+    elems->insert(item);
   }
 }
 
 template<class IStream>
 void process(IStream& in) {
+  std::set<std::string> allowed_schemes;
+  split(FLAGS_schemes, ',', &allowed_schemes);
   std::string thunk;
   while (in >> thunk) {
-    grepurl(thunk);
+    grepurl(thunk, allowed_schemes);
   }
 }
 
