@@ -2,3 +2,4 @@ grepurls
 grepurls.dSYM
 grepurls.d
 *.pyc
+.DS_Store
