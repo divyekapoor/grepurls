@@ -1,3 +1,4 @@
 grepurls
 grepurls.dSYM
 grepurls.d
+*.pyc
